@@ -5,57 +5,121 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Be My Valentine? 💖</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Futura&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Futura:wght@300;500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: "Futura", sans-serif;
       text-align: center;
-      background: linear-gradient(to right, #ff758c, #ff7eb3);
-      background-attachment: fixed;
+      background: url('https://source.unsplash.com/1600x900/?rose-petals') no-repeat center center/cover;
       color: white;
       padding: 50px;
       margin: 0;
       height: 100vh;
       overflow: hidden;
+      position: relative;
     }
+
+    /* Floating hearts animation */
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -10px;
+      font-size: 20px;
+      color: #ff4d79;
+      animation: float 4s linear infinite;
+    }
+
+    /* Elegant glassmorphism container */
     .container {
       max-width: 600px;
       margin: auto;
       background: rgba(255, 255, 255, 0.2);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
     }
+
     h1 {
-      font-size: 2em;
+      font-size: 2.5em;
+      font-weight: 500;
     }
+
     .message {
-      font-size: 1.2em;
+      font-size: 1.3em;
       margin-bottom: 20px;
     }
+
     .buttons {
-      margin-top: 20px;
+      margin-top: 30px;
       position: relative;
     }
+
     button {
       font-size: 1.2em;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border: none;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 10px;
+      transition: all 0.3s ease-in-out;
+      font-weight: bold;
     }
+
     .yes {
       background-color: #ff4d79;
       color: white;
+      box-shadow: 0 4px 8px rgba(255, 77, 121, 0.5);
     }
+
+    .yes:hover {
+      background-color: #ff1e5a;
+      transform: scale(1.1);
+    }
+
     .no {
-      background-color: #ffffff;
+      background-color: white;
       color: #ff4d79;
       position: absolute;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .no:hover {
+      transform: scale(1.1);
+    }
+
+    .signature {
+      font-size: 1.3em;
+      font-style: italic;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
+
+  <!-- Floating hearts -->
+  <script>
+    function createHearts() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+    setInterval(createHearts, 500);
+  </script>
+
   <div class="container">
     <h1>💌 Hey baby, 💌</h1>
     <p class="message">
@@ -66,7 +130,7 @@
     <h2>Will you be my Valentine? 🌹💘</h2>
     <div class="buttons">
       <button class="yes" onclick="alert('Yay! Best decision ever! ❤')">Yes</button>
-      <button class="no" onmouseover="moveButton()" aria-label="No, I won't be your Valentine">No</button>
+      <button class="no" onmouseover="moveButton()">No</button>
     </div>
     <p>Clicking "Yes" is highly recommended. Clicking "No" would be crazy but damn😂. Anyway, good luck trying to do that😭</p>
     <p>With love,</p>
@@ -80,11 +144,11 @@
       const buttonHeight = noButton.offsetHeight;
       const maxX = window.innerWidth - buttonWidth;
       const maxY = window.innerHeight - buttonHeight;
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
-      noButton.style.left = `${x}px`;
-      noButton.style.top = `${y}px`;
+      const x = Math.random() * maxX * 0.9;
+      const y = Math.random() * maxY * 0.9;
+      noButton.style.transform = `translate(${x}px, ${y}px)`;
     }
   </script>
+
 </body>
 </html>
