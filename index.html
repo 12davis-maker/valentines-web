@@ -1,154 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Be My Valentine? 💖</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Futura:wght@300;500&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: "Futura", sans-serif;
-      text-align: center;
-      background: #ffccd5;
-      color: #b3003c;
-      padding: 50px;
-      margin: 0;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Floating hearts animation */
-    @keyframes float {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-    }
-
-    .heart {
-      position: absolute;
-      bottom: -10px;
-      font-size: 20px;
-      color: #ff4d79;
-      animation: float 4s linear infinite;
-    }
-
-    /* Elegant container */
-    .container {
-      max-width: 600px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.5);
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      backdrop-filter: blur(10px);
-    }
-
-    h1, h2 {
-      font-size: 2.2em;
-      font-weight: 500;
-    }
-
-    .message {
-      font-size: 1.3em;
-      margin-bottom: 20px;
-    }
-
-    .buttons {
-      margin-top: 30px;
-      position: relative;
-    }
-
-    button {
-      font-size: 1.2em;
-      padding: 12px 24px;
-      border: none;
-      cursor: pointer;
-      border-radius: 10px;
-      transition: all 0.3s ease-in-out;
-      font-weight: bold;
-    }
-
-    .yes {
-      background-color: #ff4d79;
-      color: white;
-      box-shadow: 0 4px 8px rgba(255, 77, 121, 0.5);
-    }
-
-    .yes:hover {
-      background-color: #ff1e5a;
-      transform: scale(1.1);
-    }
-
-    .no {
-      background-color: white;
-      color: #ff4d79;
-      position: absolute;
-      transition: transform 0.4s ease-in-out;
-    }
-
-    .no:hover {
-      transform: scale(1.1);
-    }
-
-    .signature {
-      font-size: 1.3em;
-      font-style: italic;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davis Kwizera | Graphic Designer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .portfolio-item {
+            background: white;
+            color: black;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .contact-btn {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background: white;
+            color: #ff4d79;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Floating hearts -->
-  <script>
-    function createHearts() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = Math.random() * 2 + 3 + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 4000);
-    }
-    setInterval(createHearts, 500);
-  </script>
-
-  <div class="container">
-    <h1>💌 Hey baby, 💌</h1>
-    <p class="message">
-      I was going to write you a long love letter, but then I thought... why not make it a whole webpage instead? 💻💖  
-      <br><br>
-      So here we are—just you, me, and a very important question...
-    </p>
-    <h2>Will you be my Valentine? 🌹💘</h2>
-    <div class="buttons">
-      <button class="yes" onclick="alert('Yay! Best decision ever! ❤')">Yes</button>
-      <button class="no" onmouseover="moveButton()">No</button>
+    <div class="container">
+        <h1>Davis Kwizera</h1>
+        <p>Creative Graphic Designer | Branding | UI/UX</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">Project 1</div>
+            <div class="portfolio-item">Project 2</div>
+            <div class="portfolio-item">Project 3</div>
+            <div class="portfolio-item">Project 4</div>
+        </div>
+        <a href="mailto:daviskwizera@example.com" class="contact-btn">Contact Me</a>
     </div>
-    <p>Clicking "Yes" is highly recommended. Clicking "No" would be crazy but damn😂. Anyway, good luck trying to do that😭</p>
-    <p>With love,</p>
-    <p class="signature">KD ❤</p>
-  </div>
-
-  <script>
-    function moveButton() {
-      const noButton = document.querySelector(".no");
-      const buttonWidth = noButton.offsetWidth;
-      const buttonHeight = noButton.offsetHeight;
-      const maxX = window.innerWidth - buttonWidth;
-      const maxY = window.innerHeight - buttonHeight;
-      const x = Math.random() * maxX * 0.9;
-      const y = Math.random() * maxY * 0.9;
-      noButton.style.transform = `translate(${x}px, ${y}px)`;
-    }
-  </script>
-
 </body>
 </html>
