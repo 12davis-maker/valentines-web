@@ -1,43 +1,33 @@
-import { useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 
-export default function Portfolio() {
-  useEffect(() => {
-    document.title = "Davis Kwizera | Portfolio";
-  }, []);
+export default function Blog() {
+  const [posts] = useState([
+    { id: 1, title: "The Future of Design", excerpt: "Exploring trends shaping modern UI/UX.", image: "/post-1.jpg" },
+    { id: 2, title: "Marketing Psychology 101", excerpt: "How psychology influences consumer behavior.", image: "/post-2.jpg" },
+    { id: 3, title: "Mastering Digital Branding", excerpt: "Key strategies for building a strong online presence.", image: "/post-3.jpg" }
+  ]);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      {/* Hero Section */}
-      <section className="h-screen flex flex-col justify-center items-center text-center">
-        <motion.img 
-          src="/your-photo.jpg" 
-          alt="Davis Kwizera" 
-          className="w-40 h-40 rounded-full shadow-lg"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-        />
-        <h1 className="text-4xl font-bold mt-4">Davis Kwizera</h1>
-        <p className="text-lg text-gray-400">Graphic Designer | Digital Marketer | Finance & Marketing</p>
-        <Button className="mt-4 px-6 py-3 text-lg rounded-xl bg-blue-500 hover:bg-blue-600">View My Work</Button>
-      </section>
-
-      {/* Portfolio Section */}
-      <section className="py-16 px-8">
-        <h2 className="text-3xl font-bold text-center">My Work</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-          {/* Example project */}
+      {/* Header */}
+      <header className="p-6 text-center text-3xl font-bold">Davis' Blog</header>
+      
+      {/* Blog Posts */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 p-10">
+        {posts.map((post) => (
           <motion.div 
-            className="bg-gray-800 p-4 rounded-xl hover:shadow-xl"
-            whileHover={{ scale: 1.05 }}
+            key={post.id} 
+            whileHover={{ scale: 1.05 }} 
+            className="bg-gray-800 p-4 rounded-xl"
           >
-            <img src="/project1.jpg" alt="Project 1" className="w-full rounded-lg" />
-            <h3 className="text-xl font-semibold mt-4">Project Title</h3>
-            <p className="text-gray-400">Brief description of the project.</p>
+            <img src={post.image} alt={post.title} className="rounded-lg" />
+            <h2 className="mt-2 text-xl font-semibold">{post.title}</h2>
+            <p className="text-gray-400">{post.excerpt}</p>
+            <Button variant="link" className="mt-2 text-blue-400">Read More</Button>
           </motion.div>
-        </div>
+        ))}
       </section>
     </div>
   );
