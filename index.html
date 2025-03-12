@@ -1,32 +1,53 @@
+import React from "react";
 import { motion } from "framer-motion";
 
-export default function PortfolioIntro() {
+export default function Portfolio() {
   return (
-    <section className="flex flex-col items-center justify-center text-center p-6">
-      <motion.img 
-        src="/mnt/data/J01A7620.jpg" 
-        alt="Davis Kwizera" 
-        className="w-48 h-48 rounded-full shadow-lg"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-      />
-      <motion.h1 
-        className="text-3xl font-bold mt-4"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Hey, I’m Davis Kwizera
-      </motion.h1>
-      <motion.p 
-        className="text-lg text-gray-600 mt-2 max-w-xl"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Where creativity meets strategy. Blending design, psychology, and marketing to craft visuals that captivate and communicate.
-      </motion.p>
-    </section>
+    <div className="min-h-screen bg-black text-white relative">
+      {/* Background with stars */}
+      <div className="absolute inset-0 bg-[url('https://source.unsplash.com/1600x900/?stars,space')] bg-cover bg-center opacity-50"></div>
+      
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center">
+        {/* Profile Image */}
+        <motion.img
+          src="https://source.unsplash.com/300x300/?portrait"
+          alt="Davis Kwizera"
+          className="w-40 h-40 rounded-full border-4 border-white shadow-lg"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+        />
+        
+        <h1 className="text-4xl font-bold mt-4">Davis Kwizera</h1>
+        <p className="text-lg mt-2">Designer | Marketer | Creative Thinker</p>
+        
+        <section className="mt-10 px-6 max-w-3xl">
+          <h2 className="text-2xl font-bold">About Me</h2>
+          <p className="mt-2 text-lg">
+            Blending creativity, marketing, and psychology to build engaging digital experiences.
+          </p>
+        </section>
+        
+        <section className="mt-10 px-6 max-w-4xl">
+          <h2 className="text-2xl font-bold">My Work</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-4">
+            {/* Placeholder images for projects */}
+            {[1, 2, 3, 4, 5, 6].map((index) => (
+              <motion.div
+                key={index}
+                className="bg-gray-900 p-4 rounded-lg shadow-lg overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+              >
+                <img
+                  src={`https://source.unsplash.com/300x300/?art,design&sig=${index}`}
+                  alt={`Project ${index}`}
+                  className="w-full h-48 object-cover rounded-md"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
   );
 }
