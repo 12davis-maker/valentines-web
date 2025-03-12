@@ -1,69 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Davis Kwizera | Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #121212;
-            color: #ffffff;
-        }
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: #1e1e1e;
-        }
-        .section {
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .portfolio-item {
-            display: inline-block;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #222;
-            transition: transform 0.3s;
-        }
-        .portfolio-item:hover {
-            transform: scale(1.05);
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #1e1e1e;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Davis Kwizera</h1>
-        <p>Designer | Marketer | Creative Thinker</p>
-    </header>
+import { motion } from "framer-motion";
 
-    <section class="section" id="about">
-        <h2>About Me</h2>
-        <p>Blending creativity, marketing, and psychology to build engaging digital experiences.</p>
+export default function PortfolioIntro() {
+  return (
+    <section className="flex flex-col items-center justify-center text-center p-6">
+      <motion.img 
+        src="/mnt/data/J01A7620.jpg" 
+        alt="Davis Kwizera" 
+        className="w-48 h-48 rounded-full shadow-lg"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+      />
+      <motion.h1 
+        className="text-3xl font-bold mt-4"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Hey, I’m Davis Kwizera
+      </motion.h1>
+      <motion.p 
+        className="text-lg text-gray-600 mt-2 max-w-xl"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Where creativity meets strategy. Blending design, psychology, and marketing to craft visuals that captivate and communicate.
+      </motion.p>
     </section>
-
-    <section class="section" id="portfolio">
-        <h2>My Work</h2>
-        <div class="portfolio-item">Project 1</div>
-        <div class="portfolio-item">Project 2</div>
-        <div class="portfolio-item">Project 3</div>
-    </section>
-
-    <section class="section" id="contact">
-        <h2>Contact Me</h2>
-        <p>Let's collaborate! Reach me at <a href="mailto:your@email.com">your@email.com</a></p>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Davis Kwizera | All Rights Reserved</p>
-    </footer>
-</body>
-</html>
+  );
+}
